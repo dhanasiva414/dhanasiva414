@@ -1,0 +1,44 @@
+import java.util.*;
+public class Ezhil {
+    public static void main(String[] args) {
+      Scanner a=new Scanner(System.in);
+      System.out.println("Num of element in set 1: ");
+      int a1=a.nextInt();
+      int[] a2=new int[a1];
+      for(int i=0;i<a2.length;i++) {
+    	  a2[i]=a.nextInt();
+      }System.out.println("Num of element in set 2: ");
+      int a3=a.nextInt();
+      int[] a4=new int[a3];
+      for(int i=0;i<a4.length;i++) {
+    	  a4[i]=a.nextInt();
+      }
+//      9999
+//       111
+//     10110     10
+      int h=a2.length-1,l=a4.length-1;
+      int y=0;
+      int p=0,o=a4[l];
+      
+      int[] arr=new int [h+2];
+      for(int i=0;i<a2.length;i++) {
+    	  y=a2[h--]+o+p;
+    	  System.out.println("y value"+y);
+    	  arr[i]=y%10;
+    		 p=y/10;
+    	  if(a2.length==-1) {
+    		  arr[i]=y;
+    		  break;
+    	  }
+    	  System.out.println("p value"+p);
+    	  if(-1==a4.length-1) {
+    		  o=0;
+    	  }else
+    	  l--;
+      }
+      for(int g:arr) {
+    	  System.out.print(g);
+      }
+	}
+
+}
