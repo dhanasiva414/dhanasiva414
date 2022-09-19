@@ -1,0 +1,34 @@
+import java.util.Arrays;
+public class Intrev {
+	public static void main(String[] args) {
+		
+		int[] a1= {1,2,4};
+		int[] a2= {3,6,5};
+		int[]a3=new int[a1.length+a2.length];
+		int[]a4=new int[a1.length+a2.length];
+		int fir=a1.length;
+		
+		int j=0;
+		for(int i=0;i<a1.length;i++) {
+			a3[j++]=a1[i];
+		}
+		for(int i=0;i<a1.length;i++) {
+			a3[j++]=a2[i];
+		}
+		System.out.println(Arrays.toString(a3));
+       Arrays.sort(a3);System.out.println(Arrays.toString(a3));
+       int i=0,k=a3.length-1;
+       for(int l=0;l<a3.length;l++) {
+    	   if(l==0||l==1||l==4||l==5) {
+    		   a4[l]=a3[k--];
+    	   }
+    	   else if(l==2||l==3) {
+    		   a4[l]=a3[i++];
+    	   }
+       }
+      // for(int y:a4) {
+    	   System.out.print(Arrays.toString(a4));
+     //  }
+	}
+
+}
