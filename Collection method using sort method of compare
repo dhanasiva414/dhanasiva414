@@ -1,0 +1,89 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Collectiondemo {
+	public static void main(String[] args) {
+		Laptop dell=new Laptop("note ", 45000,8,true);
+		Laptop hp=new Laptop("book",45000,4,false);
+		Laptop lenavo=new Laptop("idea",55000,6,true);
+		
+		ArrayList lap=new ArrayList();
+		lap.add(dell);
+		lap.add(hp);
+		lap.add(lenavo);
+		System.out.println("Before sorting array : "+ lap);
+		Comparecollection cop=new Comparecollection();
+		Collections.sort(lap, cop);
+		System.out.println("After sorting array : " +lap);
+	}
+
+}
+
+
+
+
+
+public class Laptop {
+	int price;
+	int gp;
+	boolean touch;
+	String model;
+	
+	public String toString(){
+		return  this.model+" " + price + " " + this.gp + " " + this.touch;
+		
+	}
+
+	public Laptop(String model, int price, int gp, boolean touch) {
+		// TODO Auto-generated constructor stub
+		this.model=model;
+		this.price=price;
+		this.gp=gp;
+		this.touch=touch;
+	}
+	
+}
+
+
+
+
+
+import java.util.Comparator;
+
+public class Comparecollection implements Comparator {
+
+	public int compare(Object o1, Object o2) {
+		// TODO Auto-generated method stub
+		Laptop a1 = (Laptop) o1;
+		Laptop a2 = (Laptop) o2;
+		
+		int result=a1.model.compareTo(a2.model);
+		if(result > 0) {
+			return 3;
+		}
+		else if(result < 0) {
+			return -9;
+		}
+		else {
+			return 0;
+		}
+		
+		/*if (a1.price > a2.price) {
+			return 2;
+		} else if (a1.price < a2.price) {        // Here is if there is no need of compare this model 
+			return -1;
+		} else {
+			if(a1.gp>a2.gp) {
+				return 2;
+			}
+			else if(a1.gp<a2.gp) {
+				return -3;
+			}else {
+			return 0;
+		}*/
+		}
+	}
+
+
+
+
