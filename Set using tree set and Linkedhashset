@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class Sethash {
+	public String toString() {
+		return "Nope";
+	}
+
+	public static void main(String[] args) {
+		Sethash jj = new Sethash();
+		LinkedHashSet hs = new LinkedHashSet();
+		hs.add(6);
+		hs.add(3);
+		hs.add("mmmm");
+		hs.add(52);
+		hs.add('g');
+		hs.add(jj);
+		System.out.println(hs);
+		LinkedList ii = new LinkedList();
+		ii.add(78);
+		ii.add(12);
+		ii.add(36);
+		ii.add(78);
+		ii.add(12);
+		// ii.add("54aa");
+		System.out.println(ii);
+		Object[] o = ii.toArray();
+		for (Object k : o)
+			System.out.println("nj " + k);
+		LinkedHashSet ll = new LinkedHashSet(ii);
+		System.out.println(ll);
+		TreeSet d = new TreeSet(ll);
+		System.out.println("Sorting : " + d);
+
+	}
+}
