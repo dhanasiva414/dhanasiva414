@@ -1,0 +1,26 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+public class PropertiesDemo {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		Properties p = new Properties();
+		FileInputStream fil = new FileInputStream("properit.properities");
+		p.load(fil);
+		System.out.println(p);
+		p.get(fil);
+		p.setProperty("idli", "240");
+		System.out.println(p);
+		String ss = p.getProperty("idli");
+		System.out.println(ss);
+		FileOutputStream op = new FileOutputStream("properit.properities");
+		p.store(op, "updatefiles");
+		System.out.println(p);
+
+	}
+
+}
