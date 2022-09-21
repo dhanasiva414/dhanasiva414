@@ -1,0 +1,69 @@
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+public class Hashmap {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		HashMap hm = new HashMap();
+		hm.put("Siva", 200);
+		hm.put("Kavin", 101);
+		hm.put("Deepak", 50);
+		hm.put("kathir", 40);
+
+		// hm.put("kathir", 4000);
+		System.out.println(hm);
+		Set ke = hm.keySet();
+		System.out.println("Key values of set : " + ke);
+		Set s = hm.entrySet();
+		System.out.println("Entry of the set map : " + s);
+		Collection col = hm.values();
+		System.out.println("Collections of values : " + col);
+		Iterator it = s.iterator();
+		while (it.hasNext()) {
+			Map.Entry me = (Map.Entry) it.next();
+			// System.out.println("Iterator...... "+it.next());
+
+			// System.out.println("Get key of iterator : "+me.getKey());
+			// System.out.println("Iterator of Entry ");
+			// System.out.println(me.getKey()+" : " + me.getValue() ) ;
+			if (me.getKey().equals("Siva"))
+			// me.setValue(201);
+			{
+				me.setValue(20100);
+			}
+			System.out.println(me);
+		}
+	}
+
+}
+
+
+
+import java.util.Collection;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class Treemap {
+	public static void main(String[] args) {
+		TreeMap tr = new TreeMap();
+		tr.put(1, "nani");
+		tr.put(2, "ram");
+		tr.put(2, "ramKumar");
+		System.out.println(tr);
+		Set s = tr.entrySet();
+		System.out.println(s);
+		Collection c = tr.values();
+		System.out.println(c);
+		Set s2 = tr.keySet();
+		System.out.println(s2);
+		tr.firstEntry();
+		/*
+		   TreeMap tt=new TreeMap(); tt.putAll(tr); System.out.println(tt);
+		 */
+	}
+}
+
