@@ -1,0 +1,56 @@
+package Stack;
+
+public class ArrayStackjoin {
+	public static void main(String[] args) {
+		StackArray st=new StackArray();
+		st.push1(10);
+		st.push1(20);
+		System.out.print(st);
+		StackArray st1=new StackArray();
+		st1.push2(30);
+		st1.push2(50);
+		st1.pop1(0);
+		//st.pop(0);
+		//st.peek();
+		System.out.println(st1);
+		
+	}
+	
+
+}
+
+
+package Stack;
+
+import java.util.Arrays;
+
+//import com.sun.tools.javac.jvm.Items;
+
+public class StackArray {
+
+	private int[] array = new int[5];
+	private int count;
+
+	public void push1(int item) {
+		if (count == array.length)
+			throw new StackOverflowError();
+		array[count++] = item;
+	}
+	public int pop1(int item) {
+		if(count==0)
+			throw new IllegalStateException();
+		return array[--count];
+	}	
+	public int peek(){
+		if(count==0)
+			throw new IllegalStateException();
+		return array[count-1]; 
+	}
+	public String toString() {
+	int[] ite=	Arrays.copyOfRange(array, 0, count); //Copy stack to array
+		return Arrays.toString(ite);                 // Copy Array to String
+		
+	}
+
+}
+
