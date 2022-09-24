@@ -1,0 +1,55 @@
+
+
+public class Queueusingstack {
+	public static void main(String[] args) {
+		QueueWithTwoStack queue=new QueueWithTwoStack();
+		queue.enqueue(10);
+
+		queue.enqueue(20);
+		queue.enqueue(30);
+		queue.enqueue(50);
+	
+		queue.dequeue();
+
+		var front=queue.dequeue();
+		System.out.println(front);
+		System.out.println("queue : "+queue.peek());
+		
+	}
+}
+
+
+
+import java.util.Stack;
+
+public class QueueWithTwoStack {
+	private Stack<Integer> stack1 = new Stack<Integer>();
+	private Stack<Integer> stack2 = new Stack<Integer>();
+
+	public int enqueue(int item) {
+		stack1.push(item);
+		return item;
+
+	}
+
+	public int dequeue() {
+		if (isEmpty())
+			throw new IllegalStateException();
+		if (stack2.isEmpty())
+			while (!stack1.isEmpty())
+				stack2.push(stack1.pop());
+		return stack2.pop();
+	}
+
+	public int peek() {
+		if (stack2.isEmpty())
+			while (!stack1.isEmpty())
+				stack2.push(stack1.pop());
+		return stack2.pop();
+	}
+
+	public boolean isEmpty() {
+		return stack1.isEmpty() && stack2.isEmpty();
+	}
+
+}
