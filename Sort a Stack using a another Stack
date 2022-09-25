@@ -1,0 +1,34 @@
+package Stack;
+
+import java.util.Stack;
+
+//sort a Stack
+public class TwoStackInOneStack {
+	public static Stack<Integer> sortstack(Stack<Integer> st1) {
+		Stack<Integer> st2 = new Stack<Integer>();
+		while (!st1.isEmpty()) {
+			int temp = st1.pop();
+			while (!st2.isEmpty() && st2.peek() > temp) {
+				st1.push(st2.pop());
+			}
+			st2.push(temp);
+		}
+		return st2;
+	} // Time Complexity: O(n2) where n is the total number of integers in the given
+		// stack.
+		// Auxiliary Space: O(n)
+
+	public static void main(String[] args) {
+		Stack<Integer> st1 = new Stack<Integer>();
+		st1.push(20);
+		st1.push(10);
+		st1.push(50);
+		st1.push(1);
+		System.out.println(st1);
+		Stack<Integer> st2 = sortstack(st1);
+		while (!st2.isEmpty()) {
+			System.out.print(st2.pop() + " ");
+		}
+	}
+
+}
