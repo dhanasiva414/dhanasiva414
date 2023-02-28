@@ -1,0 +1,55 @@
+import java.io.*;
+import org.apache.commons.compress.compressors.*;
+import org.apache.commons.compress.compressors.xz.*;
+import org.apache.commons.compress.utils.IOUtils;
+import org.apache.commons.compress.compressors.huffman.HuffmanCompressorOutputStream;
+
+public class CompressionExample {
+
+  public static void main(String[] args) throws IOException {
+    // Read the input data from a file
+    byte[] inputData = readInputData("input.txt");
+
+    // Compress the input data using LZMA
+    byte[] compressedData = compressLZMA(inputData);
+
+    // Compress the LZMA output using Huffman coding
+    byte[] finalCompressedData = compressHuffman(compressedData);
+
+    // Write the final compressed data to a file
+    writeCompressedData(finalCompressedData, "output.bin");
+  }
+
+  private static byte[] readInputData(String fileName) throws IOException {
+    FileInputStream input = new FileInputStream(fileName);
+    byte[] inputData = IOUtils.toByteArray(input);
+    input.close();
+    return inputData;
+  }
+
+  private static byte[] compressLZMA(byte[] inputData) throws IOException {
+    ByteArrayOutputStream output = new ByteArrayOutputStream();
+    XZCompressorOutputStream compressor = new XZCompressorOutputStream(output);
+    compressor.write(inputData);
+    compressor.close();
+    byte[] compressedData = output.toByteArray();
+    output.close();
+    return compressedData;
+  }
+
+  private static byte[] compressHuffman(byte[] inputData) throws IOException {
+    ByteArrayOutputStream output = new ByteArrayOutputStream();
+    HuffmanCompressorOutputStream compressor = new HuffmanCompressorOutputStream(output);
+    compressor.write(inputData);
+    compressor.close();
+    byte[] compressedData = output.toByteArray();
+    output.close();
+    return compressedData;
+  }
+
+  private static void writeCompressedData(byte[] compressedData, String fileName) throws IOException {
+    FileOutputStream output = new FileOutputStream(fileName);
+    output.write(compressedData);
+    output.close();
+  }
+}
